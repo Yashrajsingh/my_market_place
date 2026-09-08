@@ -163,22 +163,6 @@ const CheckOut = () => {
                       className="h-8 object-contain"
                     />
                   </label>
-
-                  {/* Stripe */}
-                  <label
-                    className={`flex items-center gap-2 border-2 rounded-xl px-3 py-2 cursor-pointer w-[160px] transition-all duration-300 ${
-                      paymentGateway === "STRIPE"
-                        ? "border-violet-500 bg-violet-50 shadow-brand"
-                        : "border-gray-200"
-                    }`}
-                  >
-                    <Radio value="STRIPE" size="small" />
-                    <img
-                      src="https://res.cloudinary.com/ldvj1h2z/image/upload/v1782454966/libzq513tylln2a7lvfs.png"
-                      alt="Stripe"
-                      className="h-8 object-contain"
-                    />
-                  </label>
                 </RadioGroup>
               </section>
 

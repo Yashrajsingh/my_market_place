@@ -133,7 +133,7 @@ export const cancelOrder = createAsyncThunk<
 
 /* =====================================================
    CONFIRM PAYMENT (Razorpay redirect callback)
-   GET /api/payment/api/payment/{paymentId}?paymentLinkId=...
+   GET /api/payment/{paymentId}?paymentLinkId=...
 ===================================================== */
 
 export const confirmPayment = createAsyncThunk<
@@ -145,7 +145,7 @@ export const confirmPayment = createAsyncThunk<
   async ({ paymentId, paymentLinkId }, { rejectWithValue }) => {
     try {
       const response = await api.get(
-        `/api/payment/api/payment/${paymentId}`,
+        `/api/payment/${paymentId}`,
         {
           params: { paymentLinkId },
           ...authHeader(),
