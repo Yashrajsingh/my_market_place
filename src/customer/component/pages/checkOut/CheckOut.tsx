@@ -157,11 +157,9 @@ const CheckOut = () => {
                     }`}
                   >
                     <Radio value="RAZORPAY" size="small" />
-                    <img
-                      src="https://res.cloudinary.com/ldvj1h2z/image/upload/v1782455133/bvepdbskkbuhvqmoncfp.jpg"
-                      alt="Razorpay"
-                      className="h-8 object-contain"
-                    />
+                    <span className="text-xl font-bold text-[#3395FF]">
+                      Razorpay
+                    </span>
                   </label>
                 </RadioGroup>
               </section>
