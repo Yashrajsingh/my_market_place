@@ -40,7 +40,7 @@ const FilterSection = () => {
   };
 
   return (
-    <div className="-z-50 space-y-5 bg-white">
+    <div className="space-y-5 bg-white">
       {/* HEADER */}
       <div className="flex items-center justify-between h-[40px] px-9 lg:border-r">
         <p className="text-lg font-semibold text-gradient-brand">Filters</p>
