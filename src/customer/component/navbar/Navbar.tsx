@@ -264,15 +264,6 @@ const Navbar = () => {
               (item) => (
                 <li
                   key={item.categoryId}
-                  onMouseEnter={() => {
-                    setSelectedCategory(
-                      item.categoryId
-                    );
-
-                    setShowCategorySheet(
-                      true
-                    );
-                  }}
                   onClick={() => {
                     setShowCategorySheet(
                       false
@@ -288,9 +279,8 @@ const Navbar = () => {
                     rounded-full
                     font-medium
                     cursor-pointer
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
+                    transition-colors
+                    duration-200
 
                     ${
                       selectedCategory ===
