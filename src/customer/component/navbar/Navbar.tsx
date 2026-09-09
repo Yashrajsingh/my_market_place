@@ -265,13 +265,24 @@ const Navbar = () => {
                 <li
                   key={item.categoryId}
                   onClick={() => {
-                    setShowCategorySheet(
-                      false
+                    if (
+                      selectedCategory ===
+                        item.categoryId &&
+                      showCategorySheet
+                    ) {
+                      setShowCategorySheet(
+                        false
+                      );
+
+                      return;
+                    }
+
+                    setSelectedCategory(
+                      item.categoryId
                     );
 
-                    navigate(
-                      "/products/" +
-                        item.categoryId
+                    setShowCategorySheet(
+                      true
                     );
                   }}
                   className={`
