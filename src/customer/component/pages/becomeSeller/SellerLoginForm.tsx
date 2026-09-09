@@ -122,7 +122,7 @@ const SellerLoginForm = () => {
         align="center"
         sx={{
           fontWeight: 700,
-          color: "#7C3AED",
+          color: "#0071E3",
         }}
       >
         Login As Seller
@@ -143,13 +143,7 @@ const SellerLoginForm = () => {
           variant="contained"
           onClick={handleSendOtp}
           disabled={!formik.values.email || loading}
-          sx={{
-            height: 48,
-            background: "linear-gradient(135deg,#7C3AED,#F43F5E)",
-            "&:hover": {
-              background: "linear-gradient(135deg,#6D28D9,#BE123C)",
-            },
-          }}
+          sx={{ height: 48 }}
         >
           {loading ? (
             <>

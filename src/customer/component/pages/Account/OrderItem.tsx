@@ -24,7 +24,7 @@ const OrderItem = ({ order, item }: OrderItemProps) => {
       {/* Order Status */}
       <div className='flex items-center gap-4 mb-5'>
         <div>
-          <Avatar sx={{ bgcolor: "#7C3AED" }}>
+          <Avatar sx={{ bgcolor: "#0071E3" }}>
             <ElectricBolt />
           </Avatar>
         </div>

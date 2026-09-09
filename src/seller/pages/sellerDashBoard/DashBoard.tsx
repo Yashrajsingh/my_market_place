@@ -37,12 +37,11 @@ const DashBoard = () => {
   return (
     <div className="space-y-6">
       {/* Welcome banner */}
-      <div className="rounded-2xl bg-gradient-to-br from-[#1B0F33] via-[#2B163F] to-[#3B0F35] text-white p-6 md:p-8 shadow-card relative overflow-hidden">
-        <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-fuchsia-500/20 blur-2xl" />
-        <h1 className="text-2xl md:text-3xl font-extrabold relative z-10">
+      <div className="rounded-2xl bg-[#1D1D1F] text-white p-6 md:p-8 shadow-card">
+        <h1 className="text-2xl md:text-3xl font-semibold tracking-tight">
           Welcome back, Seller 👋
         </h1>
-        <p className="text-white/70 mt-2 relative z-10">
+        <p className="text-white/60 mt-2">
           Here's how your store is performing today.
         </p>
       </div>

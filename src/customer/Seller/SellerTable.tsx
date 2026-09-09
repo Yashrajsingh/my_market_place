@@ -34,7 +34,7 @@ const accountStatuses: { status: AccountStatus; title: string }[] = [
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    background: "linear-gradient(135deg, #7C3AED, #6D28D9)",
+    background: "linear-gradient(135deg, #0071E3, #0058B0)",
     color: "#fff",
     fontWeight: 700,
     fontSize: "15px",

@@ -159,22 +159,22 @@ const ProductDetails = () => {
             {/* Benefits */}
             <div className="space-y-4">
               <div className="flex items-center gap-4">
-                <Shield sx={{ color: "#7C3AED" }} />
+                <Shield sx={{ color: "#0071E3" }} />
                 <p className="text-gray-700">Authentic & Quality Assured</p>
               </div>
 
               <div className="flex items-center gap-4">
-                <WorkspacePremium sx={{ color: "#7C3AED" }} />
+                <WorkspacePremium sx={{ color: "#0071E3" }} />
                 <p className="text-gray-700">100% money back guarantee</p>
               </div>
 
               <div className="flex items-center gap-4">
-                <LocalShipping sx={{ color: "#7C3AED" }} />
+                <LocalShipping sx={{ color: "#0071E3" }} />
                 <p className="text-gray-700">Free Shipping & Returns</p>
               </div>
 
               <div className="flex items-center gap-4">
-                <Wallet sx={{ color: "#7C3AED" }} />
+                <Wallet sx={{ color: "#0071E3" }} />
                 <p className="text-gray-700">
                   Pay on delivery might be available
                 </p>

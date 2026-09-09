@@ -24,7 +24,7 @@ import {
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    background: "linear-gradient(135deg, #7C3AED, #6D28D9)",
+    background: "linear-gradient(135deg, #0071E3, #0058B0)",
     color: "#fff",
     fontWeight: "bold",
     fontSize: 15,

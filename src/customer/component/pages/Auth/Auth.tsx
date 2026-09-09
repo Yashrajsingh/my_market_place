@@ -7,29 +7,25 @@ const Auth: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-rose-50 flex items-center justify-center px-4 py-10">
+    <div className="min-h-screen bg-[#F5F5F7] flex items-center justify-center px-4 py-10">
 
-      <div className="w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden">
+      <div className="w-full max-w-5xl bg-white rounded-3xl shadow-card-hover overflow-hidden">
 
         <div className="grid grid-cols-1 md:grid-cols-2 min-h-[600px]">
 
           {/* LEFT SIDE */}
-          <div className="hidden md:flex bg-gradient-to-br from-[#1B0F33] via-[#2B163F] to-[#3B0F35] text-white p-10 flex-col justify-center relative overflow-hidden">
-
-            <div className="absolute -top-20 -left-20 w-60 h-60 rounded-full bg-fuchsia-400/15 animate-floaty" />
-
-            <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-rose-400/15 animate-floaty" />
+          <div className="hidden md:flex bg-[#1D1D1F] text-white p-10 flex-col justify-center relative overflow-hidden">
 
             <div className="relative z-10">
 
-              <h1 className="text-4xl lg:text-5xl font-bold leading-tight">
+              <h1 className="text-4xl lg:text-5xl font-semibold tracking-tight leading-tight">
                 Welcome to
-                <span className="block bg-gradient-to-r from-fuchsia-300 via-rose-300 to-amber-200 bg-clip-text text-transparent mt-2">
+                <span className="block mt-2">
                   Yash Marketplace
                 </span>
               </h1>
 
-              <p className="mt-6 text-gray-300 text-lg leading-8 max-w-md">
+              <p className="mt-6 text-gray-400 text-lg leading-8 max-w-md">
                 Discover amazing products, connect with sellers, and enjoy
                 a seamless shopping experience.
               </p>
@@ -37,7 +33,7 @@ const Auth: React.FC = () => {
               <div className="mt-10 space-y-5">
 
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-fuchsia-400/20 flex items-center justify-center text-fuchsia-300">
+                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-400">
                     ✓
                   </div>
 
@@ -47,7 +43,7 @@ const Auth: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-fuchsia-400/20 flex items-center justify-center text-fuchsia-300">
+                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-400">
                     ✓
                   </div>
 
@@ -57,7 +53,7 @@ const Auth: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-fuchsia-400/20 flex items-center justify-center text-fuchsia-300">
+                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-brand-400">
                     ✓
                   </div>
 
@@ -77,9 +73,9 @@ const Auth: React.FC = () => {
             {/* Mobile Logo */}
             <div className="md:hidden text-center mb-8">
 
-              <h1 className="text-3xl font-bold text-slate-800">
+              <h1 className="text-3xl font-semibold text-ink">
                 Yash{" "}
-                <span className="text-rose-500">
+                <span className="text-brand-500">
                   Marketplace
                 </span>
               </h1>
@@ -144,12 +140,12 @@ const Auth: React.FC = () => {
                 sx={{
                   textTransform: "none",
                   fontWeight: 700,
-                  color: "#7C3AED",
+                  color: "#0071E3",
                   fontSize: "0.95rem",
 
                   "&:hover": {
                     backgroundColor:
-                      "rgba(124,58,237,0.08)",
+                      "rgba(0,113,227,0.08)",
                   },
                 }}
               >

@@ -46,7 +46,7 @@ const Profile = () => {
           sx={{
             width: 72,
             height: 72,
-            bgcolor: "#7C3AED",
+            bgcolor: "#0071E3",
             fontSize: 28,
             fontWeight: 700,
           }}

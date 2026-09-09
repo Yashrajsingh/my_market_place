@@ -14,6 +14,8 @@ import {
   Menu,
   MenuItem,
   Typography,
+  InputBase,
+  ClickAwayListener,
 } from "@mui/material";
 
 import { useTheme } from "@mui/material/styles";
@@ -119,6 +121,28 @@ const Navbar = () => {
     setProfileMenuAnchor,
   ] = useState<null | HTMLElement>(null);
 
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  /* =========================================
+     SEARCH
+  ========================================= */
+
+  const handleSearchSubmit = (
+    event: React.FormEvent
+  ) => {
+    event.preventDefault();
+
+    const trimmed = searchQuery.trim();
+
+    if (!trimmed) return;
+
+    navigate(`/search?q=${encodeURIComponent(trimmed)}`);
+
+    setSearchOpen(false);
+    setSearchQuery("");
+  };
+
   /* =========================================
      PROFILE MENU
   ========================================= */
@@ -159,7 +183,7 @@ const Navbar = () => {
         className="fixed top-0 left-0 right-0 z-50"
         sx={{
           background:
-            "rgba(21,11,32,0.94)",
+            "rgba(255,255,255,0.85)",
 
           backdropFilter:
             "blur(18px)",
@@ -167,11 +191,8 @@ const Navbar = () => {
           WebkitBackdropFilter:
             "blur(18px)",
 
-          boxShadow:
-            "0 10px 30px rgba(124,58,237,.18)",
-
           borderBottom:
-            "1px solid rgba(255,255,255,.08)",
+            "1px solid rgba(0,0,0,.08)",
         }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-8 h-20">
@@ -188,19 +209,16 @@ const Navbar = () => {
                   setOpenMenu(true)
                 }
                 sx={{
-                  color: "white",
+                  color: "#1D1D1F",
 
                   backgroundColor:
-                    "rgba(255,255,255,.08)",
+                    "rgba(0,0,0,.04)",
 
-                  transition: ".3s",
+                  transition: ".2s",
 
                   "&:hover": {
                     backgroundColor:
-                      "#F43F5E",
-
-                    transform:
-                      "scale(1.08)",
+                      "rgba(0,0,0,.08)",
                   },
                 }}
               >
@@ -214,10 +232,7 @@ const Navbar = () => {
                 height: 44,
 
                 border:
-                  "2px solid #A78BFA",
-
-                boxShadow:
-                  "0 0 18px rgba(124,58,237,.45)",
+                  "2px solid #D2D2D7",
               }}
               src={
                 user?.image ||
@@ -232,7 +247,7 @@ const Navbar = () => {
               onClick={() =>
                 navigate("/")
               }
-              className="cursor-pointer text-xl md:text-2xl font-extrabold tracking-wide bg-gradient-to-r from-violet-400 via-fuchsia-400 to-rose-400 bg-clip-text text-transparent transition duration-300 hover:scale-105"
+              className="cursor-pointer text-xl md:text-2xl font-semibold tracking-tight text-ink transition duration-200"
             >
               My Marketplace
             </h1>
@@ -281,8 +296,8 @@ const Navbar = () => {
                       selectedCategory ===
                         item.categoryId &&
                       showCategorySheet
-                        ? "bg-gradient-to-r from-violet-500 to-rose-500 text-white shadow-lg"
-                        : "text-gray-300 hover:bg-white/10 hover:text-fuchsia-300"
+                        ? "bg-brand-500 text-white"
+                        : "text-ink-soft hover:bg-gray-100 hover:text-ink"
                     }
                   `}
                 >
@@ -301,25 +316,83 @@ const Navbar = () => {
 
             {/* SEARCH */}
 
-            <IconButton
-              sx={{
-                color: "white",
-
-                bgcolor:
-                  "rgba(255,255,255,.08)",
-
-                transition: ".3s",
-
-                "&:hover": {
-                  bgcolor: "#F43F5E",
-
-                  transform:
-                    "translateY(-2px)",
-                },
-              }}
+            <ClickAwayListener
+              onClickAway={() =>
+                setSearchOpen(false)
+              }
             >
-              <SearchIcon />
-            </IconButton>
+              <Box
+                sx={{
+                  position: "relative",
+                }}
+              >
+                <IconButton
+                  onClick={() =>
+                    setSearchOpen((prev) => !prev)
+                  }
+                  sx={{
+                    color: "#1D1D1F",
+
+                    bgcolor:
+                      "rgba(0,0,0,.04)",
+
+                    transition: ".2s",
+
+                    "&:hover": {
+                      bgcolor: "rgba(0,0,0,.08)",
+                    },
+                  }}
+                >
+                  <SearchIcon />
+                </IconButton>
+
+                {searchOpen && (
+                  <Box
+                    component="form"
+                    onSubmit={handleSearchSubmit}
+                    sx={{
+                      position: "absolute",
+                      top: "calc(100% + 10px)",
+                      right: 0,
+
+                      display: "flex",
+                      alignItems: "center",
+
+                      width: { xs: 220, sm: 300 },
+
+                      bgcolor: "#FFFFFF",
+                      border: "1px solid rgba(0,0,0,.1)",
+                      borderRadius: "14px",
+                      boxShadow: "0 12px 28px rgba(0,0,0,0.12)",
+
+                      px: 2,
+                      py: 0.5,
+
+                      zIndex: 60,
+                    }}
+                  >
+                    <SearchIcon
+                      sx={{
+                        color: "#6E6E73",
+                        mr: 1,
+                        fontSize: 20,
+                      }}
+                    />
+
+                    <InputBase
+                      autoFocus
+                      fullWidth
+                      placeholder="Search products..."
+                      value={searchQuery}
+                      onChange={(e) =>
+                        setSearchQuery(e.target.value)
+                      }
+                      sx={{ fontSize: 15 }}
+                    />
+                  </Box>
+                )}
+              </Box>
+            </ClickAwayListener>
 
             {/* =================================
                 PROFILE
@@ -355,24 +428,24 @@ const Navbar = () => {
                     textTransform:
                       "none",
 
-                    color: "white",
+                    color: "#1D1D1F",
 
                     borderColor:
-                      "rgba(255,255,255,.2)",
+                      "rgba(0,0,0,.15)",
 
                     px: 2,
 
                     py: 0.8,
 
                     background:
-                      "rgba(255,255,255,.05)",
+                      "transparent",
 
                     "&:hover": {
                       borderColor:
-                        "#A78BFA",
+                        "#0071E3",
 
                       background:
-                        "rgba(124,58,237,.15)",
+                        "rgba(0,113,227,.06)",
                     },
                   }}
                 >
@@ -472,19 +545,16 @@ const Navbar = () => {
                 navigate("/wishlist")
               }
               sx={{
-                color: "white",
+                color: "#1D1D1F",
 
                 bgcolor:
-                  "rgba(255,255,255,.08)",
+                  "rgba(0,0,0,.04)",
 
-                transition: ".3s",
+                transition: ".2s",
 
                 "&:hover": {
                   bgcolor:
-                    "#F43F5E",
-
-                  transform:
-                    "scale(1.08)",
+                    "rgba(0,0,0,.08)",
                 },
               }}
             >
@@ -505,19 +575,16 @@ const Navbar = () => {
                 navigate("/cart")
               }
               sx={{
-                color: "white",
+                color: "#1D1D1F",
 
                 bgcolor:
-                  "rgba(255,255,255,.08)",
+                  "rgba(0,0,0,.04)",
 
-                transition: ".3s",
+                transition: ".2s",
 
                 "&:hover": {
                   bgcolor:
-                    "#F43F5E",
-
-                  transform:
-                    "scale(1.08)",
+                    "rgba(0,0,0,.08)",
                 },
               }}
             >
@@ -563,22 +630,15 @@ const Navbar = () => {
                   "nowrap",
 
                 background:
-                  "linear-gradient(135deg,#7C3AED,#F43F5E)",
+                  "#1D1D1F",
 
-                boxShadow:
-                  "0 10px 20px rgba(124,58,237,.35)",
+                boxShadow: "none",
 
-                transition: ".3s",
+                transition: ".2s",
 
                 "&:hover": {
-                  transform:
-                    "translateY(-2px)",
-
-                  boxShadow:
-                    "0 15px 30px rgba(244,63,94,.45)",
-
                   background:
-                    "linear-gradient(135deg,#6D28D9,#BE123C)",
+                    "#000000",
                 },
               }}
             >
@@ -612,7 +672,7 @@ const Navbar = () => {
                   false
                 )
               }
-              className="absolute right-8 top-6 z-50 h-10 w-10 flex items-center justify-center rounded-full bg-white shadow-lg hover:bg-red-500 hover:text-white transition-all duration-300"
+              className="absolute right-8 top-6 z-50 h-10 w-10 flex items-center justify-center rounded-full bg-white shadow-card hover:bg-gray-100 transition-all duration-200"
             >
               <CloseIcon fontSize="small" />
             </button>
@@ -640,10 +700,9 @@ const Navbar = () => {
           sx: {
             width: 290,
 
-            background:
-              "linear-gradient(165deg,#150F27 0%,#241736 55%,#3B0F35 100%)",
+            background: "#FFFFFF",
 
-            color: "white",
+            color: "#1D1D1F",
           },
         }}
       >
@@ -681,19 +740,19 @@ const Navbar = () => {
                 height: 52,
 
                 border:
-                  "2px solid #A78BFA",
+                  "2px solid #D2D2D7",
               }}
             >
               {user?.fullName?.charAt(0)}
             </Avatar>
 
             <Box>
-              <h2 className="font-bold text-lg text-white">
+              <h2 className="font-semibold text-lg text-ink">
                 {user?.fullName ||
                   "Yash Marketplace"}
               </h2>
 
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-ink-soft">
                 {isLoggedIn
                   ? "Welcome Back 👋"
                   : "Welcome"}
@@ -733,12 +792,9 @@ const Navbar = () => {
 
                     "&:hover": {
                       background:
-                        "linear-gradient(90deg,#7C3AED,#F43F5E)",
+                        "#F5F5F7",
 
-                      color: "white",
-
-                      transform:
-                        "translateX(8px)",
+                      color: "#1D1D1F",
                     },
                   }}
                 >
@@ -765,7 +821,7 @@ const Navbar = () => {
               p: 2,
 
               borderTop:
-                "1px solid rgba(255,255,255,.08)",
+                "1px solid rgba(0,0,0,.08)",
             }}
           >
 
@@ -784,17 +840,17 @@ const Navbar = () => {
 
                   py: 1.2,
 
-                  color: "white",
+                  color: "#FF3B30",
 
                   borderColor:
-                    "#ef4444",
+                    "#FF3B30",
 
                   textTransform:
                     "none",
 
                   "&:hover": {
                     background:
-                      "#ef4444",
+                      "#FF3B30",
 
                     color: "white",
                   },
@@ -825,8 +881,7 @@ const Navbar = () => {
                 textTransform:
                   "none",
 
-                background:
-                  "linear-gradient(135deg,#7C3AED,#F43F5E)",
+                background: "#1D1D1F",
               }}
             >
               Become Seller

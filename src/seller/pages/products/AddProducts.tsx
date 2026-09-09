@@ -121,7 +121,7 @@ const AddProducts = () => {
     <div className="min-h-screen bg-gray-100 p-8">
       <Paper className="max-w-5xl mx-auto p-8 rounded-2xl shadow-card">
 
-        <Typography variant="h5" gutterBottom sx={{ fontWeight: 800, background: "linear-gradient(135deg,#7C3AED,#F43F5E)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+        <Typography variant="h5" gutterBottom sx={{ fontWeight: 800, background: "linear-gradient(135deg,#0071E3,#FF3B30)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
           Add Product
         </Typography>
 

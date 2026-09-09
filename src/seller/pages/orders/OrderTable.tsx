@@ -22,7 +22,7 @@ import { OrderStatus } from "../../../types/OrderTypes";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    background: "linear-gradient(135deg, #7C3AED, #6D28D9)",
+    background: "linear-gradient(135deg, #0071E3, #0058B0)",
     color: theme.palette.common.white,
     fontWeight: 700,
     fontSize: "15px",

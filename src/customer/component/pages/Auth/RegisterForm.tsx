@@ -251,15 +251,15 @@ const RegisterForm: React.FC =
                   "none",
                 fontWeight: 600,
                 borderColor:
-                  "#7C3AED",
+                  "#0071E3",
                 color:
-                  "#6D28D9",
+                  "#0058B0",
 
                 "&:hover": {
                   borderColor:
-                    "#6D28D9",
+                    "#0058B0",
                   backgroundColor:
-                    "rgba(124,58,237,0.08)",
+                    "rgba(0,113,227,0.08)",
                 },
               }}
             >
@@ -314,14 +314,14 @@ const RegisterForm: React.FC =
               fontWeight: 700,
 
               background:
-                "linear-gradient(135deg,#7C3AED,#F43F5E)",
+                "linear-gradient(135deg,#0071E3,#FF3B30)",
 
               boxShadow:
-                "0 8px 20px rgba(124,58,237,0.3)",
+                "0 8px 20px rgba(0,113,227,0.3)",
 
               "&:hover": {
                 background:
-                  "linear-gradient(135deg,#6D28D9,#BE123C)",
+                  "linear-gradient(135deg,#0058B0,#D70015)",
               },
 
               "&:disabled": {

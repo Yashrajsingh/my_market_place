@@ -6,51 +6,81 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Apple-style neutral scale — used as the app's primary accent (buttons, links, active states)
         brand: {
-          50: "#F5F3FF",
-          100: "#EDE9FE",
-          200: "#DDD6FE",
-          300: "#C4B5FD",
-          400: "#A78BFA",
-          500: "#7C3AED",
-          600: "#6D28D9",
-          700: "#5B21B6",
-          800: "#4C1D95",
-          900: "#3B0764",
+          50: "#EAF4FE",
+          100: "#D6E9FD",
+          200: "#ADD3FB",
+          300: "#7DB8F8",
+          400: "#4098F5",
+          500: "#0071E3",
+          600: "#0058B0",
+          700: "#004689",
+          800: "#003368",
+          900: "#00224A",
         },
+        // Muted system red — used sparingly for deals/sale/destructive accents
         accent: {
-          50: "#FFF1F2",
-          100: "#FFE4E6",
-          200: "#FECDD3",
-          300: "#FDA4AF",
-          400: "#FB7185",
-          500: "#F43F5E",
-          600: "#E11D48",
-          700: "#BE123C",
-          800: "#9F1239",
-          900: "#881337",
+          50: "#FFF1F0",
+          100: "#FFE1DE",
+          200: "#FFC2BC",
+          300: "#FF9D97",
+          400: "#FF6B61",
+          500: "#FF3B30",
+          600: "#D70015",
+          700: "#A20014",
+          800: "#7D0010",
+          900: "#57000B",
         },
         sunshine: {
-          300: "#FCD34D",
-          400: "#FBBF24",
-          500: "#F59E0B",
-          600: "#D97706",
+          300: "#FFD97D",
+          400: "#FFC64D",
+          500: "#FF9F0A",
+          600: "#D97E00",
         },
         ink: {
-          DEFAULT: "#1E1B2E",
-          soft: "#6B6478",
+          DEFAULT: "#1D1D1F",
+          soft: "#6E6E73",
+        },
+        // Re-map Tailwind's stock vivid palettes to the same neutral/blue/red system so any
+        // component still using violet-*/purple-*/pink-*/rose-*/fuchsia-* classes stays in theme.
+        violet: {
+          50: "#EAF4FE", 100: "#D6E9FD", 200: "#ADD3FB", 300: "#7DB8F8", 400: "#4098F5",
+          500: "#0071E3", 600: "#0058B0", 700: "#004689", 800: "#003368", 900: "#00224A",
+        },
+        purple: {
+          50: "#FBFBFD", 100: "#F5F5F7", 200: "#E8E8ED", 300: "#D2D2D7", 400: "#AEAEB2",
+          500: "#8E8E93", 600: "#6E6E73", 700: "#515154", 800: "#3A3A3C", 900: "#1D1D1F",
+        },
+        fuchsia: {
+          50: "#FBFBFD", 100: "#F5F5F7", 200: "#E8E8ED", 300: "#D2D2D7", 400: "#AEAEB2",
+          500: "#8E8E93", 600: "#6E6E73", 700: "#515154", 800: "#3A3A3C", 900: "#1D1D1F",
+        },
+        pink: {
+          50: "#FFF1F0", 100: "#FFE1DE", 200: "#FFC2BC", 300: "#FF9D97", 400: "#FF6B61",
+          500: "#FF3B30", 600: "#D70015", 700: "#A20014", 800: "#7D0010", 900: "#57000B",
+        },
+        rose: {
+          50: "#FFF1F0", 100: "#FFE1DE", 200: "#FFC2BC", 300: "#FF9D97", 400: "#FF6B61",
+          500: "#FF3B30", 600: "#D70015", 700: "#A20014", 800: "#7D0010", 900: "#57000B",
         },
       },
       fontFamily: {
-        sans: ["Poppins", "Inter", "sans-serif"],
-        display: ["Poppins", "sans-serif"],
+        sans: [
+          "-apple-system", "BlinkMacSystemFont", "SF Pro Display", "SF Pro Text",
+          "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif",
+        ],
+        display: [
+          "-apple-system", "BlinkMacSystemFont", "SF Pro Display",
+          "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif",
+        ],
       },
       boxShadow: {
-        brand: "0 10px 30px -6px rgba(124,58,237,0.35)",
-        accent: "0 10px 30px -6px rgba(244,63,94,0.35)",
-        card: "0 6px 20px rgba(30,27,46,0.08)",
-        "card-hover": "0 16px 34px rgba(30,27,46,0.16)",
-        glow: "0 0 0 4px rgba(124,58,237,0.15)",
+        brand: "0 8px 24px -6px rgba(0,0,0,0.18)",
+        accent: "0 8px 24px -6px rgba(0,0,0,0.18)",
+        card: "0 2px 12px rgba(0,0,0,0.06)",
+        "card-hover": "0 12px 28px rgba(0,0,0,0.12)",
+        glow: "0 0 0 4px rgba(0,113,227,0.15)",
       },
       keyframes: {
         fadeInUp: {
@@ -70,8 +100,8 @@ module.exports = {
           "50%": { backgroundPosition: "100% 50%" },
         },
         pulseGlow: {
-          "0%, 100%": { boxShadow: "0 0 0 0 rgba(124,58,237,0.45)" },
-          "50%": { boxShadow: "0 0 0 10px rgba(124,58,237,0)" },
+          "0%, 100%": { boxShadow: "0 0 0 0 rgba(0,113,227,0.35)" },
+          "50%": { boxShadow: "0 0 0 10px rgba(0,113,227,0)" },
         },
       },
       animation: {

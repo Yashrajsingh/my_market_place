@@ -422,7 +422,7 @@ const Cart = () => {
               startIcon={
                 <Favorite
                   sx={{
-                    color: "#F43F5E",
+                    color: "#FF3B30",
                   }}
                 />
               }

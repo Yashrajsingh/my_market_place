@@ -25,7 +25,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
           <Box>
             <Avatar
               className="text-white"
-              sx={{ width: 56, height: 56, bgcolor: "#7C3AED" }}
+              sx={{ width: 56, height: 56, bgcolor: "#0071E3" }}
             >
               {review.user?.fullName?.charAt(0) || "U"}
             </Avatar>

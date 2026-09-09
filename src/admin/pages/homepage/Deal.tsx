@@ -47,22 +47,22 @@ const Deal = () => {
                 transition: ".3s",
                 boxShadow:
                   activeTab === tab
-                    ? "0 8px 20px rgba(124,58,237,.3)"
+                    ? "0 8px 20px rgba(0,113,227,.3)"
                     : "none",
                 background:
                   activeTab === tab
-                    ? "linear-gradient(90deg,#7C3AED,#F43F5E)"
+                    ? "linear-gradient(90deg,#0071E3,#FF3B30)"
                     : "#fff",
                 color:
                   activeTab === tab
                     ? "#fff"
-                    : "#7C3AED",
-                borderColor: "#7C3AED",
+                    : "#0071E3",
+                borderColor: "#0071E3",
 
                 "&:hover": {
                   background:
                     activeTab === tab
-                      ? "linear-gradient(90deg,#6D28D9,#BE123C)"
+                      ? "linear-gradient(90deg,#0058B0,#D70015)"
                       : "#F5F3FF",
                 },
               }}

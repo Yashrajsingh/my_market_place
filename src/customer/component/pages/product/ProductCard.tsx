@@ -101,14 +101,14 @@ const ProductCard = ({ item }: { item: Product}) => {
           <div className="flex gap-3">
             <Button className="icon-btn" onClick={handleToggleWishlist}>
               {isWishlisted ? (
-                <Favorite sx={{ color: "#F43F5E" }} />
+                <Favorite sx={{ color: "#FF3B30" }} />
               ) : (
-                <FavoriteBorder sx={{ color: "#F43F5E" }} />
+                <FavoriteBorder sx={{ color: "#FF3B30" }} />
               )}
             </Button>
 
             <Button className="icon-btn" onClick={handleAddToCart}>
-              <AddShoppingCart sx={{ color: "#7C3AED" }} />
+              <AddShoppingCart sx={{ color: "#0071E3" }} />
             </Button>
           </div>
         </div>

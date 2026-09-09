@@ -14,7 +14,7 @@
 /* Hover lift */
 .group:hover .card {
   transform: translateY(-6px);
-  box-shadow: 0 14px 28px rgba(124, 58, 237, 0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.14);
 }
 
 /* Images */
@@ -73,7 +73,7 @@
 }
 
 .dot.active {
-  background: #F43F5E;
+  background: #0071E3;
   width: 16px;
   border-radius: 4px;
 }

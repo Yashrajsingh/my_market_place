@@ -155,10 +155,10 @@ const AddNewCouponForm = () => {
                   borderRadius: 2,
                   textTransform: "none",
                   background:
-                    "linear-gradient(90deg,#7C3AED,#F43F5E)",
+                    "linear-gradient(90deg,#0071E3,#FF3B30)",
                   "&:hover": {
                     background:
-                      "linear-gradient(90deg,#6D28D9,#BE123C)",
+                      "linear-gradient(90deg,#0058B0,#D70015)",
                   },
                 }}
               >

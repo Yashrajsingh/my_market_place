@@ -16,6 +16,8 @@ import Home from "./customer/component/pages/home/Home";
 
 import Product from "./customer/component/pages/product/Product";
 
+import SearchResults from "./customer/component/pages/search/SearchResults";
+
 import Review from "./customer/component/pages/review/Review";
 
 import Cart from "./customer/component/pages/cart/Cart";
@@ -129,6 +131,12 @@ function App() {
           <Route
             path="/products/:categoryId"
             element={<Product />}
+          />
+
+          {/* SEARCH */}
+          <Route
+            path="/search"
+            element={<SearchResults />}
           />
 
           {/* REVIEWS */}

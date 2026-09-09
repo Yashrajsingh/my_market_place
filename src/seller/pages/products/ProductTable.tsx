@@ -148,7 +148,7 @@ import { fetchSellerProducts } from "../../../State/seller/SellerProductSlice";
 
 const StyledTableCell = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`]: {
-    background: "linear-gradient(135deg, #7C3AED, #6D28D9)",
+    background: "linear-gradient(135deg, #0071E3, #0058B0)",
     color: "#fff",
     fontWeight: 600,
   },
@@ -260,7 +260,7 @@ const ProductTable = () => {
                 </StyledTableCell>
 
                 <StyledTableCell>
-                  <EditIcon sx={{ color: "#7C3AED", cursor: "pointer" }} />
+                  <EditIcon sx={{ color: "#0071E3", cursor: "pointer" }} />
                 </StyledTableCell>
 
               </StyledTableRow>

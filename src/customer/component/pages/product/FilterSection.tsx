@@ -64,7 +64,7 @@ const FilterSection = () => {
               sx={{
                 fontSize: "16px",
                 fontWeight: "bold",
-                color: "#7C3AED",
+                color: "#0071E3",
                 pb: "14px",
               }}
             >
@@ -115,7 +115,7 @@ const FilterSection = () => {
               sx={{
                 fontSize: "16px",
                 fontWeight: "bold",
-                color: "#7C3AED",
+                color: "#0071E3",
                 pb: "14px",
               }}
             >
@@ -162,7 +162,7 @@ const FilterSection = () => {
               sx={{
                 fontSize: "16px",
                 fontWeight: "bold",
-                color: "#7C3AED",
+                color: "#0071E3",
                 pb: "14px",
               }}
             >
@@ -201,7 +201,7 @@ const FilterSection = () => {
               sx={{
                 fontSize: "16px",
                 fontWeight: "bold",
-                color: "#7C3AED",
+                color: "#0071E3",
                 pb: "14px",
               }}
             >
