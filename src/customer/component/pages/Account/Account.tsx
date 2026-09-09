@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Routes, useLocation, useNavigate , Route } from 'react-router-dom'
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@mui/material'
 import Orders from './Orders'
 import OrderDetails from './OrderDetails'
 import UserDetails from './UserDetails'
 import UserAddressCard from './UserAddressCard'
 import Addresses from './Addresses'
+import { useAppDispatch } from '../../../../State/Store'
+import { logout } from '../../../../State/AuthSlice'
 
 const Account = () => {
 
@@ -13,13 +23,32 @@ const Account = () => {
         {name:"profile" ,path:"/account/profile"},
         {name:"savedCards", path:"/account/savedcards"},
         {name :"Addresses", path:"/account/addresses"},
-        {name:"LogOut" , path:"/"}
+        {name:"LogOut" , path:"/", isLogout: true}
     ]
 
     const location = useLocation();
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
 
-    const handleClick = (item:any) => navigate(item.path);
+    const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
+
+    const handleClick = (item:any) => {
+      if (item.isLogout) {
+        setLogoutDialogOpen(true);
+        return;
+      }
+
+      navigate(item.path);
+    }
+
+    const handleConfirmLogout = async () => {
+      setLogoutDialogOpen(false);
+
+      await dispatch(logout(undefined));
+
+      navigate("/");
+      window.location.reload();
+    }
 
   return (
     <div className='min-h-screen bg-gray-100 p-6'>
@@ -58,6 +87,36 @@ const Account = () => {
           </Routes>
         </section>
       </div>
+
+      <Dialog
+        open={logoutDialogOpen}
+        onClose={() => setLogoutDialogOpen(false)}
+      >
+        <DialogTitle sx={{ fontWeight: 700 }}>Log out?</DialogTitle>
+
+        <DialogContent>
+          <DialogContentText>
+            Are you sure you want to log out of your account?
+          </DialogContentText>
+        </DialogContent>
+
+        <DialogActions sx={{ px: 3, pb: 2 }}>
+          <Button onClick={() => setLogoutDialogOpen(false)}>
+            Cancel
+          </Button>
+
+          <Button
+            variant="contained"
+            onClick={handleConfirmLogout}
+            sx={{
+              backgroundColor: "#FF3B30",
+              "&:hover": { backgroundColor: "#D70015" },
+            }}
+          >
+            Log Out
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   )
 }
