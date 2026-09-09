@@ -28,7 +28,6 @@ import {
   AddShoppingCart,
   FavoriteBorder,
   AccountCircle,
-  Logout,
 } from "@mui/icons-material";
 
 import CategorySheet from "../navbar/CategorySheet";
@@ -496,20 +495,6 @@ const Navbar = () => {
                     />
 
                     Profile
-                  </MenuItem>
-
-                  <MenuItem
-                    onClick={
-                      handleLogout
-                    }
-                  >
-                    <Logout
-                      sx={{
-                        mr: 1,
-                      }}
-                    />
-
-                    Logout
                   </MenuItem>
 
                 </Menu>
