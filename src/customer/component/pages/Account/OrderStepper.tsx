@@ -28,21 +28,35 @@ const steps = [
   },
 ];
 
-const canceledStep = [
-  {
-    title: "Order Placed",
-    subtitle: "Order received",
-    value: "PLACED",
-  },
-  {
-    title: "Order Cancelled",
-    subtitle: "This order was cancelled",
-    value: "CANCELLED",
-  },
-];
-
-const OrderStepper = ({ orderStatus }: { orderStatus: string }) => {
+const OrderStepper = ({
+  orderStatus,
+  cancelledBy,
+}: {
+  orderStatus: string;
+  cancelledBy?: "CUSTOMER" | "SELLER" | null;
+}) => {
   const isCancelled = orderStatus === "CANCELLED";
+
+  const cancelledSubtitle =
+    cancelledBy === "CUSTOMER"
+      ? "You cancelled this order"
+      : cancelledBy === "SELLER"
+      ? "The seller cancelled this order"
+      : "This order was cancelled";
+
+  const canceledStep = [
+    {
+      title: "Order Placed",
+      subtitle: "Order received",
+      value: "PLACED",
+    },
+    {
+      title: "Order Cancelled",
+      subtitle: cancelledSubtitle,
+      value: "CANCELLED",
+    },
+  ];
+
   const statusStep = isCancelled ? canceledStep : steps;
 
   // PENDING sits before the first real step; anything else maps 1:1.

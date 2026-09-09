@@ -47,6 +47,7 @@ export interface Order {
   discount: number;
   totalItem: number;
   orderStatus: OrderStatus;
+  cancelledBy: "CUSTOMER" | "SELLER" | null;
   paymentStatus: PaymentStatus;
   orderDate: string;
   deliverDate: string;

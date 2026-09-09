@@ -51,6 +51,15 @@ const OrderDetails = () => {
   const orderStatus = order.orderStatus;
   const canCancel = ["PENDING", "PLACED", "CONFIRMED", "SHIPPED"].includes(orderStatus);
 
+  const statusLabel =
+    orderStatus === "CANCELLED"
+      ? order.cancelledBy === "CUSTOMER"
+        ? "CANCELLED BY YOU"
+        : order.cancelledBy === "SELLER"
+        ? "CANCELLED BY SELLER"
+        : "CANCELLED"
+      : orderStatus;
+
   const savedAmount = item ? item.mrpPrice - item.sellingPrice : 0;
 
   const handleCancelOrder = () => {
@@ -84,7 +93,7 @@ const OrderDetails = () => {
           <p className="text-xl font-semibold text-rose-600">₹{item?.sellingPrice}</p>
 
           <p className="inline-block text-sm font-semibold px-3 py-1 rounded-full bg-amber-50 text-amber-600 border border-amber-200">
-            Order Status: {orderStatus}
+            Order Status: {statusLabel}
           </p>
         </div>
 
@@ -113,7 +122,7 @@ const OrderDetails = () => {
       {/* Order Tracking */}
       <section className="bg-white rounded-2xl shadow-card border border-violet-100 p-6">
         <h1 className="text-xl font-bold mb-6 text-gradient-brand">Order Tracking</h1>
-        <OrderStepper orderStatus={orderStatus} />
+        <OrderStepper orderStatus={orderStatus} cancelledBy={order.cancelledBy} />
       </section>
 
       {/* Delivery Address */}

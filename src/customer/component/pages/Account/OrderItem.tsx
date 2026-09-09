@@ -31,7 +31,13 @@ const OrderItem = ({ order, item }: OrderItemProps) => {
 
         <div>
           <h1 className={`font-bold ${statusColors[order.orderStatus] || "text-gray-600"}`}>
-            {order.orderStatus}
+            {order.orderStatus === "CANCELLED"
+              ? order.cancelledBy === "CUSTOMER"
+                ? "CANCELLED BY YOU"
+                : order.cancelledBy === "SELLER"
+                ? "CANCELLED BY SELLER"
+                : "CANCELLED"
+              : order.orderStatus}
           </h1>
           <p className='text-sm text-gray-500'>
             Arriving By {new Date(order.deliverDate).toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short" })}
