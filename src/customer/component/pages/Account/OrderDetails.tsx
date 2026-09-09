@@ -1,5 +1,14 @@
-import React, { useEffect } from "react";
-import { Box, Button, Divider } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Divider,
+} from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import OrderStepper from "./OrderStepper";
 import { Payment } from "@mui/icons-material";
@@ -18,6 +27,8 @@ const OrderDetails = () => {
 
   const order = useAppSelector(selectOrder);
   const loading = useAppSelector(selectOrderLoading);
+
+  const [cancelDialogOpen, setCancelDialogOpen] = useState(false);
 
   useEffect(() => {
     if (orderId) {
@@ -43,6 +54,11 @@ const OrderDetails = () => {
   const savedAmount = item ? item.mrpPrice - item.sellingPrice : 0;
 
   const handleCancelOrder = () => {
+    setCancelDialogOpen(true);
+  };
+
+  const handleConfirmCancelOrder = () => {
+    setCancelDialogOpen(false);
     dispatch(cancelOrder(order.id));
   };
 
@@ -160,6 +176,36 @@ const OrderDetails = () => {
           </Button>
         )}
       </div>
+
+      <Dialog
+        open={cancelDialogOpen}
+        onClose={() => setCancelDialogOpen(false)}
+      >
+        <DialogTitle sx={{ fontWeight: 700 }}>Cancel this order?</DialogTitle>
+
+        <DialogContent>
+          <DialogContentText>
+            Are you sure you want to cancel this order? This can't be undone.
+          </DialogContentText>
+        </DialogContent>
+
+        <DialogActions sx={{ px: 3, pb: 2 }}>
+          <Button onClick={() => setCancelDialogOpen(false)}>
+            Keep Order
+          </Button>
+
+          <Button
+            variant="contained"
+            onClick={handleConfirmCancelOrder}
+            sx={{
+              backgroundColor: "#FF3B30",
+              "&:hover": { backgroundColor: "#D70015" },
+            }}
+          >
+            Cancel Order
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };
