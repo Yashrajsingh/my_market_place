@@ -142,9 +142,13 @@ import {
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import { styled } from "@mui/material/styles";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 import { useAppDispatch, useAppSelector } from "../../../State/Store";
-import { fetchSellerProducts } from "../../../State/seller/SellerProductSlice";
+import {
+  fetchSellerProducts,
+  deleteProduct,
+} from "../../../State/seller/SellerProductSlice";
 
 const StyledTableCell = styled(TableCell)(() => ({
   [`&.${tableCellClasses.head}`]: {
@@ -180,6 +184,16 @@ const ProductTable = () => {
 
   console.log(products);
 
+  const handleDelete = (productId: number, title: string) => {
+    const confirmed = window.confirm(
+      `Delete "${title}"? This can't be undone.`
+    );
+
+    if (!confirmed) return;
+
+    dispatch(deleteProduct(productId));
+  };
+
   return (
     <div>
       <h1 className="text-2xl font-bold text-gradient-brand mb-4">My Products</h1>
@@ -199,6 +213,7 @@ const ProductTable = () => {
             <StyledTableCell>Quantity</StyledTableCell>
             <StyledTableCell>Size</StyledTableCell>
             <StyledTableCell>Update</StyledTableCell>
+            <StyledTableCell>Delete</StyledTableCell>
           </TableRow>
         </TableHead>
 
@@ -206,13 +221,13 @@ const ProductTable = () => {
 
           {loading && (
             <TableRow>
-              <TableCell colSpan={10}>Loading...</TableCell>
+              <TableCell colSpan={11}>Loading...</TableCell>
             </TableRow>
           )}
 
           {error && (
             <TableRow>
-              <TableCell colSpan={10}>{error}</TableCell>
+              <TableCell colSpan={11}>{error}</TableCell>
             </TableRow>
           )}
 
@@ -261,6 +276,15 @@ const ProductTable = () => {
 
                 <StyledTableCell>
                   <EditIcon sx={{ color: "#0071E3", cursor: "pointer" }} />
+                </StyledTableCell>
+
+                <StyledTableCell>
+                  <DeleteIcon
+                    onClick={() =>
+                      handleDelete(item.id, item.title)
+                    }
+                    sx={{ color: "#FF3B30", cursor: "pointer" }}
+                  />
                 </StyledTableCell>
 
               </StyledTableRow>

@@ -90,6 +90,32 @@ export const createProduct = createAsyncThunk<
 );
 
 /* ===========================
+   Delete Product
+=========================== */
+
+export const deleteProduct = createAsyncThunk<
+  number,
+  number,
+  { rejectValue: string }
+>(
+  "sellerProduct/deleteProduct",
+  async (productId, { rejectWithValue }) => {
+    try {
+      await api.delete(`/api/sellers/products/${productId}`);
+
+      return productId;
+    } catch (error: any) {
+      console.log(error);
+
+      return rejectWithValue(
+        error.response?.data?.message ||
+          "Unable to delete product"
+      );
+    }
+  }
+);
+
+/* ===========================
    Slice
 =========================== */
 
@@ -137,6 +163,21 @@ const sellerProductSlice = createSlice({
 
       .addCase(createProduct.rejected, (state, action) => {
         state.loading = false;
+        state.error =
+          action.payload ||
+          action.error.message ||
+          "Something went wrong";
+      })
+
+      /* Delete */
+
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        state.products = state.products.filter(
+          (product) => product.id !== action.payload
+        );
+      })
+
+      .addCase(deleteProduct.rejected, (state, action) => {
         state.error =
           action.payload ||
           action.error.message ||
