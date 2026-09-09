@@ -51,6 +51,7 @@ const Account = () => {
         <section className='md:col-span-3 bg-white rounded-2xl shadow-card border border-violet-100 p-6 min-h-[500px]'>
           <Routes>
             <Route path = '/'  element = {<UserDetails/>}/>
+            <Route path = '/profile'  element = {<UserDetails/>}/>
             <Route path = '/orders'  element = {<Orders/>}/>
             <Route path = '/order/:orderId/:orderItemId'  element = {<OrderDetails/>}/>
             <Route path = '/addresses'  element = {<Addresses/>}/>
