@@ -85,6 +85,7 @@ const OrderTable = () => {
           <TableHead>
             <TableRow>
               <StyledTableCell>Order ID</StyledTableCell>
+              <StyledTableCell>Customer</StyledTableCell>
               <StyledTableCell>Products</StyledTableCell>
               <StyledTableCell>Shipping Address</StyledTableCell>
               <StyledTableCell>Total</StyledTableCell>
@@ -95,13 +96,13 @@ const OrderTable = () => {
           <TableBody>
             {loading ? (
               <TableRow>
-                <TableCell colSpan={5} align="center">
+                <TableCell colSpan={6} align="center">
                   Loading...
                 </TableCell>
               </TableRow>
             ) : orders.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={5} align="center">
+                <TableCell colSpan={6} align="center">
                   No orders yet
                 </TableCell>
               </TableRow>
@@ -109,6 +110,15 @@ const OrderTable = () => {
               orders.map((order: any) => (
                 <StyledTableRow key={order.id}>
                   <StyledTableCell>#{order.id}</StyledTableCell>
+
+                  <StyledTableCell>
+                    <div className="font-medium text-gray-800">
+                      {order.user?.fullName || order.shippingAddress?.name || "—"}
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      {order.user?.mobile || order.shippingAddress?.mobile || ""}
+                    </div>
+                  </StyledTableCell>
 
                   <StyledTableCell>
                     {order.orderItems
