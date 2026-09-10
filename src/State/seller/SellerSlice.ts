@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { api } from "../../config/Api";
 import { Order, OrderStatus } from "../../types/OrderTypes";
-import { SellerReport } from "../../types/SellerTypes";
+import { SellerCommissionSummary, SellerOrderEarning, SellerReport } from "../../types/SellerTypes";
 import { Transaction } from "../../types/TransactionTypes";
 import { getErrorMessage } from "../../util/getErrorMessage";
 
@@ -29,6 +29,50 @@ export const fetchSellerReport = createAsyncThunk<
       return response.data;
     } catch (error: any) {
       return rejectWithValue(getErrorMessage(error, "Unable to fetch report"));
+    }
+  }
+);
+
+/* ================================
+   Commission summary (rate + gross/net earnings)
+   GET /sellers/commission
+================================ */
+
+export const fetchSellerCommission = createAsyncThunk<
+  SellerCommissionSummary,
+  void,
+  { rejectValue: string }
+>(
+  "seller/fetchSellerCommission",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get("/sellers/commission", sellerAuthHeader());
+
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(getErrorMessage(error, "Unable to fetch commission"));
+    }
+  }
+);
+
+/* ================================
+   Per-order commission breakdown
+   GET /sellers/commission/orders
+================================ */
+
+export const fetchSellerCommissionOrders = createAsyncThunk<
+  SellerOrderEarning[],
+  void,
+  { rejectValue: string }
+>(
+  "seller/fetchSellerCommissionOrders",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get("/sellers/commission/orders", sellerAuthHeader());
+
+      return response.data;
+    } catch (error: any) {
+      return rejectWithValue(getErrorMessage(error, "Unable to fetch commission history"));
     }
   }
 );
@@ -112,6 +156,8 @@ export const fetchSellerTransactions = createAsyncThunk<
 
 interface SellerState {
   report: SellerReport | null;
+  commission: SellerCommissionSummary | null;
+  commissionOrders: SellerOrderEarning[];
   orders: Order[];
   transactions: Transaction[];
   loading: boolean;
@@ -120,6 +166,8 @@ interface SellerState {
 
 const initialState: SellerState = {
   report: null,
+  commission: null,
+  commissionOrders: [],
   orders: [],
   transactions: [],
   loading: false,
@@ -145,6 +193,20 @@ const sellerSlice = createSlice({
       })
       .addCase(fetchSellerReport.rejected, (state, action) => {
         state.loading = false;
+        state.error = action.payload;
+      })
+
+      .addCase(fetchSellerCommission.fulfilled, (state, action) => {
+        state.commission = action.payload;
+      })
+      .addCase(fetchSellerCommission.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+
+      .addCase(fetchSellerCommissionOrders.fulfilled, (state, action) => {
+        state.commissionOrders = action.payload;
+      })
+      .addCase(fetchSellerCommissionOrders.rejected, (state, action) => {
         state.error = action.payload;
       })
 

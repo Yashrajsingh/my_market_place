@@ -48,8 +48,28 @@ export interface SellerReport {
     totalSales:number;
     totalRefunds:number;
     totalTax:number;
+    totalCommission:number;
     netEarnings:number;
     totalOrders:number;
     cancelOrders:number;
     totalTransactions:number;
+}
+
+export interface SellerCommissionSummary {
+    commissionRatePercent: number;
+    grossEarnings: number;
+    platformCommission: number;
+    netEarnings: number;
+    totalOrders: number;
+    totalSales: number;
+}
+
+export interface SellerOrderEarning {
+    orderId: number;
+    orderDate: string;
+    orderStatus: string;
+    paymentStatus: string;
+    grossAmount: number;
+    commissionAmount: number;
+    netAmount: number;
 }
